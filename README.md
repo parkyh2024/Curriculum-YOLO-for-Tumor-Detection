@@ -2,7 +2,6 @@
 
 Official code for "Curriculum Learning-Driven YOLO for Accurate Tumor Detection in Ultrasound B-Mode Images Using Hierarchically Zoomed-in Images". This model utilizes curriculum learning and hierarchically zoomed-in images to improve tumor detection accuracy in ultrasound images.
 
-![Framework Diagram](https://i.imgur.com/your-diagram-image.png)
 *Figure: The proposed curriculum learning framework, which trains the model progressively from detail-focused zoomed-in images to context-aware full images.*
 
 <br>
