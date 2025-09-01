@@ -43,7 +43,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
 
 This study utilizes the **OASBUD (Open Access Series of Breast Ultrasonic Data)**, a publicly available ultrasound image dataset.
 
-* **Download:** The dataset can be downloaded from the official **[OASBUD GitHub Repository](https://github.com/oasbud/oasbud)**.
+* **Download:** The dataset can be downloaded from the official **[OASBUD Dataset]([https://github.com/oasbud/oasbud](https://zenodo.org/records/545928))**.
 * **Setup:** Please download the dataset and structure it as described in the provided data preparation scripts. The scripts assume an `Original` directory containing `images` and `labels` subdirectories.
 
 <br>
