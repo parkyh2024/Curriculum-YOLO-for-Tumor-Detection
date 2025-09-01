@@ -2,6 +2,7 @@
 
 Official code for "Curriculum Learning-Driven YOLO for Accurate Tumor Detection in Ultrasound B-Mode Images Using Hierarchically Zoomed-in Images". This model utilizes curriculum learning and hierarchically zoomed-in images to improve tumor detection accuracy in ultrasound images.
 
+![Framework Diagram](https://i.imgur.com/your-diagram-image.png)
 *Figure: The proposed curriculum learning framework, which trains the model progressively from detail-focused zoomed-in images to context-aware full images.*
 
 <br>
@@ -33,7 +34,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
     ```bash
     # Python 3.8+ is recommended
     python -m venv venv
-    source venv/bin/activate
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
     pip install -r requirements.txt
     ```
 
@@ -43,7 +44,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
 
 This study utilizes the **OASBUD (Open Access Series of Breast Ultrasonic Data)**, a publicly available ultrasound image dataset.
 
-* **Download:** You can find information on accessing the dataset in the original paper.
+* **Download:** The dataset can be downloaded from the official **[OASBUD GitHub Repository](https://github.com/oasbud/oasbud)**.
 * **Setup:** Please download the dataset and structure it as described in the provided data preparation scripts. The scripts assume an `Original` directory containing `images` and `labels` subdirectories.
 
 <br>
