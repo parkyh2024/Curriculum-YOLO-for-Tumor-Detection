@@ -6,13 +6,13 @@ Official code for "Curriculum Learning-Driven YOLO for Accurate Tumor Detection 
 
 <br>
 
-## 📖 Abstract
+## Abstract
 
 Deep learning-based computer-aided diagnosis (CADx) systems show significant promise, but their performance is often hindered by the scarcity of annotated medical imaging data. To address this, we propose an efficient training framework that enhances a YOLO-based object detection model's performance and stability in data-limited settings. The framework incorporates a detail-to-context curriculum learning strategy using hierarchically zoomed-in B-mode images, where learning difficulty is guided by the tumor-to-background area ratio. This approach allows the model to first learn the tumor's morphological features before gradually integrating surrounding contextual information.
 
 <br>
 
-## 🚀 Key Features
+## Key Features
 
 * **Curriculum Learning Strategy:** A novel 'easy-to-hard' training method that begins with tumor-centric `zoom2` images and progressively moves to `zoom3`, `zoom4`, and `full` images. This prevents the model from being confused by complex background information in the initial stages.
 * **Enhanced Training Efficiency:** The curriculum learning-driven model achieved 97.2% of its final performance using only 35% of the training data compared to conventional methods.
@@ -21,7 +21,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
 
 <br>
 
-## ⚙️ Installation
+## Installation
 
 1.  **Clone the repository:**
     ```bash
@@ -39,7 +39,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
 
 <br>
 
-## 📊 Dataset
+## Dataset
 
 This study utilizes the **OASBUD (Open Access Series of Breast Ultrasonic Data)**, a publicly available ultrasound image dataset.
 
@@ -48,7 +48,7 @@ This study utilizes the **OASBUD (Open Access Series of Breast Ultrasonic Data)*
 
 <br>
 
-## 📖 Usage (Workflow)
+## Usage (Workflow)
 
 The entire experimental workflow—from data preparation to training and validation—is automated with the provided Python scripts.
 
@@ -95,7 +95,7 @@ After training is complete, evaluate the final models on the held-out test set.
 
 <br>
 
-## 📈 Results
+## Results
 
 Our proposed framework demonstrates a more balanced precision-recall trade-off and enhanced training efficiency. The final model trained for 200 epochs per stage (CL_YOLO_200) showed improved performance over the traditional training approach (Trad_YOLO).
 
@@ -106,7 +106,7 @@ Our proposed framework demonstrates a more balanced precision-recall trade-off a
 
 <br>
 
-## 📜 Citation
+## Citation
 
 If you find this work useful for your research, please consider citing our paper:
 
