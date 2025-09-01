@@ -33,7 +33,7 @@ Deep learning-based computer-aided diagnosis (CADx) systems show significant pro
     ```bash
     # Python 3.8+ is recommended
     python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    source venv/bin/activate
     pip install -r requirements.txt
     ```
 
