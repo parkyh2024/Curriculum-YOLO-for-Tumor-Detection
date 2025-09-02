@@ -70,7 +70,7 @@ The training process is automated to handle multiple datasets sequentially.
 * **Run Automated Training:**
     Execute the `Start_training.py` script. It will automatically discover all prepared datasets (`Original`, `Zoom2_640`, etc.) and train a YOLOv5 model on each one sequentially. You will be prompted for a single seed value to ensure reproducibility across experiments.
     ```bash
-    python Start_training.py
+    python Start_CL_training.py
     # Enter a 4-digit seed (0-9999), or 'n' for a random seed
     ```
     For the curriculum learning approach, the best weights (`best.pt`) from one stage should be used as the starting weights for the next. This script can be adapted to automate this transfer process.
