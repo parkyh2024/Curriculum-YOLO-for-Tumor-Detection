@@ -105,7 +105,7 @@ If you find this work useful for your research, please consider citing our paper
 
 ```bibtex
 @article{Park2025Curriculum,
-  author  = {Park, Yu Hyun and Choi, Hongseok and Lee, Ki-Baek and Kim, Hyungsuk},
+  author  = {Park Yu Hyun, Choi Hongseok, Lee Ki-Baek, Kim Hyungsuk},
   title   = {Curriculum Learning-Driven YOLO for Accurate Tumor Detection in Ultrasound B-Mode Images Using Hierarchically Zoomed-in Images},
   journal = {Applied Sciences},
   year    = {2025},
