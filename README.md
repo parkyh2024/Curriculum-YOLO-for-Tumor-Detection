@@ -63,13 +63,6 @@ First, generate the hierarchically zoomed-in datasets required for curriculum le
     # Enter the zoom factor(s) to generate (e.g., '2-4' or '2,3,4')
     ```
 
-* **(Optional) Create Cropped Datasets:**
-    To remove image borders (e.g., black bars from the ultrasound machine), run `crop.py`.
-    ```bash
-    python crop.py
-    # Enter the number of pixels to crop from each edge
-    ```
-
 ### Step 2: Model Training
 
 The training process is automated to handle multiple datasets sequentially.
