@@ -50,11 +50,11 @@ This study utilizes the **OASBUD (Open Access Series of Breast Ultrasonic Data)*
 
 ## Usage (Workflow)
 
-The entire experimental workflow—from data preparation to training and validation—is automated with the provided Python scripts.
+The entire experimental workflow—from data preparation to training, validation, and benchmarking—is automated with the provided Python scripts.
 
-### Step 1: Data Preparation & Augmentation
+### Step 1: Data Preparation (Create Zoom-in Datasets)
 
-First, generate the hierarchically zoomed-in datasets required for curriculum learning.
+First, generate the hierarchically zoomed-in datasets required for curriculum learning. This step is a prerequisite for the training process.
 
 * **Create Zoom-in Datasets:**
     Run the `Create_zoom_dataset.py` script. It will prompt you to enter the zoom factors you wish to generate (e.g., '2-4' to create Zoom2, Zoom3, and Zoom4 datasets). This script creates cropped, resized, and padded 640x640 images based on the tumor's bounding box in the original image.
@@ -63,28 +63,41 @@ First, generate the hierarchically zoomed-in datasets required for curriculum le
     # Enter the zoom factor(s) to generate (e.g., '2-4' or '2,3,4')
     ```
 
-### Step 2: Model Training
+### Step 2: Automated Curriculum Learning Training
 
-The training process is automated to handle multiple datasets sequentially.
+Once the zoom-in datasets are ready, execute the automated curriculum learning pipeline. This script automatically proceeds with training in a predefined sequence (`Zoom2` -> `Zoom3` -> `Zoom4` -> `Resized640`), using the best weights (`best.pt`) from each stage as the initial weights for the next.
 
-* **Run Automated Training:**
-    Execute the `Start_training.py` script. It will automatically discover all prepared datasets (`Original`, `Zoom2_640`, etc.) and train a YOLOv5 model on each one sequentially. You will be prompted for a single seed value to ensure reproducibility across experiments.
+* **Run Automated Curriculum Training:**
+    Execute the `Start_CL_training.py` script. You will be prompted for a seed value to ensure reproducibility.
     ```bash
     python Start_CL_training.py
-    # Enter a 4-digit seed (0-9999), or 'n' for a random seed
+    # Enter a seed value (or 'n' for random): 
     ```
-    For the curriculum learning approach, the best weights (`best.pt`) from one stage should be used as the starting weights for the next. This script can be adapted to automate this transfer process.
+    Upon completion, the final model will be saved with a name like `CL_final_seed<your_seed>.pt`.
 
-### Step 3: Model Performance Validation
+### Step 3: Model Performance Validation (Accuracy)
 
-After training is complete, evaluate the final models on the held-out test set.
+After training is complete, evaluate the final model's performance (mAP, Precision, Recall) on the held-out test set.
 
 * **Run Validation:**
-    Execute the `Start_val.py` script. It will scan for all completed training runs and present you with a numbered list.
+    Execute the `Start_CL_val.py` script. You must pass the **same seed value used in Step 2** as the `--seed` argument.
     ```bash
-    python Start_val.py
+    python Start_CL_val.py --seed YOUR_SEED_VALUE
+    # Replace YOUR_SEED_VALUE with the seed used during training (e.g., 123)
     ```
-    Select the model(s) you wish to evaluate. The script will then run `yolov5/val.py` with the `--task test` flag to measure the model's generalization performance.
+    The script will automatically locate the final model and test image list corresponding to that seed and run YOLOv5's `val.py`.
+
+### Step 4: Benchmark Inference Speed (Optional)
+
+In addition to model accuracy, you can benchmark the inference speed (ms/image and FPS) to assess its performance in a practical clinical setting.
+
+* **Run Benchmark:**
+    Execute the `Start_CL_test.py` script. This also requires the **seed value from Step 2**.
+    ```bash
+    python Start_CL_test.py --seed YOUR_SEED_VALUE
+    # Replace YOUR_SEED_VALUE with the seed used during training
+    ```
+    The script measures the inference time for every image in the specified test set and reports a summary of the average inference time and FPS.
 
 <br>
 
@@ -92,10 +105,10 @@ After training is complete, evaluate the final models on the held-out test set.
 
 Our proposed framework demonstrates a more balanced precision-recall trade-off and enhanced training efficiency. The final model trained for 200 epochs per stage (CL_YOLO_200) showed improved performance over the traditional training approach (Trad_YOLO).
 
-| Model | Precision | Recall | mAP@0.5 |
-| :--- | :---: | :---: | :---: |
-| Trad_YOLO | 0.927 | 0.843 | 0.905 |
-| **CL_YOLO_200**| **0.946** | **0.851** | **0.906** |
+| Model         | Precision | Recall | mAP@0.5 |
+| :------------ | :-------: | :----: | :-----: |
+| Trad_YOLO     |   0.927   | 0.843  |  0.905  |
+| **CL_YOLO_200** | **0.946** | **0.851** | **0.906** |
 
 <br>
 
